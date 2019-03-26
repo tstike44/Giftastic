@@ -7,26 +7,26 @@ var animeArr = ['Sword Art Online', 'One Punch Man', 'Fairy Tail', 'Hi Score Gir
     for (i = 0; i < animeArr.length; i++) {
         var arrayBtn = $("<button>");
         arrayBtn.addClass("gif-array-button");
+        arrayBtn.attr('data-name',animeArr[i]);
         arrayBtn.text(animeArr[i]);
         $("#gif-buttons").append(arrayBtn)
     }
-$("#submit").click(function(){
+$('#submit').click(function(){
     var newBtn = $("<button>")
     var input = $('input').val();
-    arrayBtn.attr('data-name')
     newBtn.append(input)
     $("#gif-buttons").append(newBtn);
 })
 
-$("#gif-buttons").click(function(){
+$(document).on('click','.gif-array-button', function(){
 var anime = $(this).attr("data-name");
+
 var queryURL = "https://api.giphy.com/v1/gifs/search?&q="+ anime +"&limit=10&offset=0&lang=en&api_key=ovobMu0e9nWE7IM6EdMkjiLYqzi6rsjR";
  $.ajax({
         url: queryURL,
         method: "GET"
     }) 
     .then(function (response) {
-        console.log(response)
         var results = response.data;
 
     for (i = 0; i < results.length; i++)  {
@@ -35,19 +35,21 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?&q="+ anime +"&limit=10&off
         var rating = results[i].rating;
         
         var p = $("<p>").text("Rating: " + rating);
-        
+        var imgRes =results[i].images.fixed_height.url;
         var animeImage = $("<img>");
-        
-        animeImage.attr("src", results[i].images.fixed_height.url);
+        animeImage.attr()
+        animeImage.attr("src", imgRes);
         console.log(results[i].images.fixed_height.url)
         gifDiv.prepend(p);
         gifDiv.prepend(animeImage);
         
-        $("#gifs-show-here").prepend(gifDiv);
+        $("#gifs-show-here").append(animeImage);
         }
              
+            console.log(gifDiv)
     }) //end of ajax response
 })//end of button click function
+
     $(".gif").on("click", function () {
             var state = $(this).attr("data-state");
 
@@ -60,6 +62,7 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?&q="+ anime +"&limit=10&off
             }
 
         }) //end of motion click function
+        
         
             
 }); //end ready function
