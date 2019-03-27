@@ -10,17 +10,25 @@ var animeArr = ['Gun Gale Online', 'One Punch Man', 'Fairy Tail', 'Seven Deadly 
         arrayBtn.attr('data-name',animeArr[i]);
         arrayBtn.text(animeArr[i]);
         $("#gif-buttons").append(arrayBtn)
-
+        $('#submit').click();
     }
-$('#submit').click(function(){
+
+    
+$(document).on('click','#submit', function(event){
+    event.preventDefault();
     var newBtn = $("<button>")
     var input = $('input').val().trim();
     newBtn.append(input)
     newBtn.attr('data-name',animeArr[i]);
-    $("#gif-buttons").append(newBtn);
-    console.log(newBtn)
 
+    $("#gif-buttons").append(newBtn);
+    animeArr.push(newBtn);
+    $("#search-here").empty();
+    console.log(animeArr)
 })
+
+
+
 
 $(document).on('click','.gif-array-button', function(){
 var anime = $(this).attr("data-name");
@@ -42,11 +50,23 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?&q="+ anime +"&limit=10&off
         console.log(rating)
 
         var p = $("<p>").text("Rating: " + rating);
+        
+        //different image types..still and animated
         var imgRes = results[i].images.fixed_height.url;
+        var stillRes = results[i].images.fixed_height_still.url;
 
+        //variable for images to be held
         var animeImage = $("<img>");
+        
+
+        //setting date-state
         animeImage.attr("data-state", "still")
+        animeImage.attr("src", stillRes);
+        animeImage.attr("data-state", "animate")
         animeImage.attr("src", imgRes);
+        
+        
+        
 
         //console logging the images 
         console.log(imgRes)
@@ -54,7 +74,7 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?&q="+ anime +"&limit=10&off
         gifDiv.append(p);
         gifDiv.append(animeImage);
         
-        $("#gif-show-here").append(gifDiv);
+        $("#gif-show-here").prepend(gifDiv);
         console.log(gifDiv)
         }
              
@@ -70,7 +90,7 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?&q="+ anime +"&limit=10&off
                 $(this).attr("data-state", "animate");
             } else {
                 $(this).attr('src', $(this).attr("data-still"));
-                $(this).attr("data-still", "still");
+                $(this).attr("data-state", "still");
             }
 
         }) //end of motion click function
