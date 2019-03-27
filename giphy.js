@@ -37,7 +37,7 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?&q="+ anime +"&limit=10&off
         var p = $("<p>").text("Rating: " + rating);
         var imgRes =results[i].images.fixed_height.url;
         var animeImage = $("<img>");
-        animeImage.attr()
+        // animeImage.attr()
         animeImage.attr("src", imgRes);
         console.log(results[i].images.fixed_height.url)
         gifDiv.prepend(p);
