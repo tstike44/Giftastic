@@ -24,7 +24,7 @@ $(document).on('click','#submit', function(event){
     $("#gif-buttons").append(newBtn);
     animeArr.push(input);
     $("#search-here").empty();
-    console.log(animeArr)
+  
 })
 
 
@@ -40,14 +40,13 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?&q="+ anime +"&limit=10&off
     }) 
     .then(function (response) {
         var results = response.data;
-        console.log(response)
 
     for (i = 0; i < results.length; i++)  {
         var gifDiv = $("<div>");
         gifDiv.attr('id', 'gif-me')
 
         var rating = results[i].rating;
-        console.log(rating)
+        
 
         var p = $("<p>").text("Rating: " + rating);
         
@@ -59,15 +58,12 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?&q="+ anime +"&limit=10&off
         var animeImage = $("<img>");
         // animeImage.attr()
         animeImage.attr("src", stillRes);
-        
-        //console logging the images 
-        console.log(imgRes)
+    
 
         gifDiv.append(p);
         gifDiv.append(animeImage);
         
         $("#gif-show-here").prepend(gifDiv);
-        console.log(gifDiv)
         
         
         
