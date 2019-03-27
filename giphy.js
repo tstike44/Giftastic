@@ -17,6 +17,7 @@ var animeArr = ['Gun Gale Online', 'One Punch Man', 'Fairy Tail', 'Seven Deadly 
 $(document).on('click','#submit', function(event){
     event.preventDefault();
     var newBtn = $("<button>")
+    newBtn.attr('class', )
     var input = $('input').val().trim();
     newBtn.append(input)
     
