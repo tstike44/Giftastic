@@ -40,7 +40,7 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?&q="+ anime +"&limit=10&off
     }) 
     .then(function (response) {
         var results = response.data;
-
+        console.log(results)
     for (i = 0; i < results.length; i++)  {
         var gifDiv = $("<div>");
         gifDiv.attr('id', 'gif-me')
@@ -52,6 +52,7 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?&q="+ anime +"&limit=10&off
         
         //different image types..still and animated
         var imgRes = results[i].images.fixed_height.url;
+        
         var stillRes = results[i].images.fixed_height_still.url;
 
         //variable for images to be held
