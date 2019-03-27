@@ -19,10 +19,9 @@ $(document).on('click','#submit', function(event){
     var newBtn = $("<button>")
     var input = $('input').val().trim();
     newBtn.append(input)
-    newBtn.attr('data-name',animeArr[i]);
-
+    
     $("#gif-buttons").append(newBtn);
-    animeArr.push(newBtn);
+    animeArr.push(input);
     $("#search-here").empty();
     console.log(animeArr)
 })
@@ -58,11 +57,8 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?&q="+ anime +"&limit=10&off
         //variable for images to be held
         var animeImage = $("<img>");
         // animeImage.attr()
-        animeImage.attr("src", imgRes);
+        animeImage.attr("src", stillRes);
         
-        
-        
-
         //console logging the images 
         console.log(imgRes)
 
@@ -71,25 +67,29 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?&q="+ anime +"&limit=10&off
         
         $("#gif-show-here").prepend(gifDiv);
         console.log(gifDiv)
+        
+        
+        
+        $(document).on("click", "img", function () {
+                var state = $(this).attr("data-state");
+
+                if (state == "still") {
+                    $(this).attr('src', $(this).attr("data-animate"));
+                    $(this).attr("data-state", imgRes);
+                } else {
+                    $(this).attr('src', $(this).attr("data-still"));
+                    $(this).attr("data-state", stillRes);
+                }
+               
+            }) //end of motion click function
         }
              
             
     }) //end of ajax response
+        
 })//end of button click function
 
-    $(document).on("click", "img", function () {
-            var state = $(this).attr("data-state");
-
-            if (state == "still") {
-                $(this).attr('src', $(this).attr("data-animate"));
-                $(this).attr("data-state", "animate");
-            } else {
-                $(this).attr('src', $(this).attr("data-still"));
-                $(this).attr("data-state", "still");
-            }
-
-        }) //end of motion click function
-        
+    
         
             
 }); //end ready function
