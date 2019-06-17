@@ -3,6 +3,7 @@
 $(document).ready(function () {
 //store deafualt items on page load in this array
 var animeArr = ['Gun Gale Online', 'One Punch Man', 'Fairy Tail', 'Seven Deadly Sins', 'The Devil Is a Part-Timer!', 'Soul Eater', "Death Note", "Devilman Crybaby", "Blue Exorcist", "Kakegurui"];
+
 //creates the buttons at the top of the page
     for (i = 0; i < animeArr.length; i++) {
         var arrayBtn = $("<button>");
@@ -13,17 +14,19 @@ var animeArr = ['Gun Gale Online', 'One Punch Man', 'Fairy Tail', 'Seven Deadly 
         $('#submit').click();
     }
 
-    
+//when the submit button is clicked the newBtn is put into the array
 $(document).on('click','#submit', function(event){
     event.preventDefault();
-    var newBtn = $("<button>")
-    newBtn.attr('class', )
     var input = $('input').val().trim();
+    //new button that will be displayed 
+    var newBtn = $("<button>")
+    newBtn.attr('class', "gif-array-button" )
+    newBtn.attr('data-name', input)
     newBtn.append(input)
-    
     $("#gif-buttons").append(newBtn);
     animeArr.push(input);
-    $("#search-here").empty();
+    //clear input field
+    $("#search-here").val('');
   
 })
 
