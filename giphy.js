@@ -47,25 +47,26 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?&q="+ anime +"&limit=10&off
     for (i = 0; i < results.length; i++)  {
         var gifDiv = $("<div>");
         gifDiv.attr('id', 'gif-me')
+        console.log(response.data)
 
-        var rating = results[i].rating;
+        var title = results[i].title;
         
 
-        var p = $("<p>").text("Rating: " + rating);
+        var p = $("<p>").text("Title: " + title);
         
         //different image types..still and animated
         var imgRes = results[i].images.fixed_height.url;
-        
         var stillRes = results[i].images.fixed_height_still.url;
 
-        //variable for images to be held
+        //creating an img tag for the gif to be stored
         var animeImage = $("<img>");
-        // animeImage.attr()
-        animeImage.attr("src", stillRes);
-    
 
-        gifDiv.append(p);
+        animeImage.attr("src", stillRes);
+        
+        //appending the image and the gif title
         gifDiv.append(animeImage);
+        gifDiv.append(p);
+        
         
         $("#gif-show-here").prepend(gifDiv);
         
