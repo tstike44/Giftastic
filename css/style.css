@@ -13,11 +13,28 @@ button {
     text-align: center;
   }    
 
+  a {
+    color: black;
+    font-weight: bolder;
+    position: fixed;
+    text-align: center;
+  }
+
   .gif-array-button{
     background-color: black;
     border-color: black;
     color: white;
     margin-top: 1px;
+  }
+
+  #gif-me {
+    margin:15px;
+  }
+
+  header {
+    position: absolute;
+    /* margin-bottom:20px; */
+    left: 20px;
   }
 
   .input-header {
@@ -34,10 +51,8 @@ button {
     color: white;
     border-color: black
   }
+ 
 
-   #gif-me {
-    margin:15px;
-  } 
  
  
 
