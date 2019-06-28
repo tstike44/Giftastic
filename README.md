@@ -1,6 +1,6 @@
 # Giftastic
 
-* [Click Here For Live Version](https://tstike44.github.io/Giftastic/)
+* [Click Here to View it Live ](https://tstike44.github.io/Giftastic/)
 
 * In this little activity you can click on any of the buttons for a list of gifs from the giphtastic API. 
 
