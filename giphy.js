@@ -1,5 +1,3 @@
-
-
 $(document).ready(function () {
 	//store deafualt items on page load in this array
 	var animeArr = ['Gun Gale Online', 'One Punch Man', 'Fairy Tail', 'Seven Deadly Sins', 'The Devil Is a Part-Timer!', 'Soul Eater', "Death Note", "Devilman Crybaby", "Blue Exorcist", "Kakegurui"];
@@ -72,14 +70,8 @@ $(document).ready(function () {
 
 					//setting the gifs to show inthe div
 					$("#gif-show-here").prepend(gifDiv);
-				
+
 				}
-			
 			}) //end of ajax response
-
 	}) //end of button click function
-
-
-
-
 }); //end ready function
