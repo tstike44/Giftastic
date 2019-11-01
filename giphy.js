@@ -3,6 +3,7 @@
 $(document).ready(function () {
 //store deafualt items on page load in this array
 var animeArr = ['Gun Gale Online', 'One Punch Man', 'Fairy Tail', 'Seven Deadly Sins', 'The Devil Is a Part-Timer!', 'Soul Eater', "Death Note", "Devilman Crybaby", "Blue Exorcist", "Kakegurui"];
+
 //creates the buttons at the top of the page
     for (i = 0; i < animeArr.length; i++) {
         var arrayBtn = $("<button>");
@@ -13,17 +14,19 @@ var animeArr = ['Gun Gale Online', 'One Punch Man', 'Fairy Tail', 'Seven Deadly 
         $('#submit').click();
     }
 
-    
+//when the submit button is clicked the newBtn is put into the array
 $(document).on('click','#submit', function(event){
     event.preventDefault();
-    var newBtn = $("<button>")
-    newBtn.attr('class', )
     var input = $('input').val().trim();
+    //new button that will be displayed 
+    var newBtn = $("<button>")
+    newBtn.attr('class', "gif-array-button" )
+    newBtn.attr('data-name', input)
     newBtn.append(input)
-    
     $("#gif-buttons").append(newBtn);
     animeArr.push(input);
-    $("#search-here").empty();
+    //clear input field
+    $("#search-here").val('');
   
 })
 
@@ -44,25 +47,26 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?&q="+ anime +"&limit=10&off
     for (i = 0; i < results.length; i++)  {
         var gifDiv = $("<div>");
         gifDiv.attr('id', 'gif-me')
+        console.log(response.data)
 
-        var rating = results[i].rating;
+        var title = results[i].title;
         
 
-        var p = $("<p>").text("Rating: " + rating);
+        var p = $("<p>").text("Title: " + title);
         
         //different image types..still and animated
         var imgRes = results[i].images.fixed_height.url;
-        
         var stillRes = results[i].images.fixed_height_still.url;
 
-        //variable for images to be held
+        //creating an img tag for the gif to be stored
         var animeImage = $("<img>");
-        // animeImage.attr()
-        animeImage.attr("src", stillRes);
-    
 
-        gifDiv.append(p);
+        animeImage.attr("src", stillRes);
+        
+        //appending the image and the gif title
         gifDiv.append(animeImage);
+        gifDiv.append(p);
+        
         
         $("#gif-show-here").prepend(gifDiv);
         
