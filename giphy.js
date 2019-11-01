@@ -74,23 +74,7 @@ $(document).ready(function () {
 
 					//setting the gifs to show inthe div
 					$("#gif-show-here").prepend(gifDiv);
-					
-					//click the gif to make it play/pause
-					// $(document).on("click", "img", function () {
-					// 	var state = $(this).attr("data-state");
-
-					// 	console.log(this)
-
-					// 	if (state == "still") {
-					// 		$(this).attr('src', $(this).attr("data-animate"));
-					// 		$(this).attr("data-state", imgPlay);
-					// 	} else {
-					// 		$(this).attr('src', $(this).attr("data-still"));
-					// 		$(this).attr("data-state", imgStill);
-					// 	}
-	
-					// }) //end of motion click function
-
+				
 				}
 			
 			}) //end of ajax response
