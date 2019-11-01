@@ -40,7 +40,6 @@ $(document).ready(function () {
 		})
 			.then(function (response) {
 				var results = response.data;
-				// console.log(results)
 				for (i = 0; i < results.length; i++) {
 					//creating divs for the gifs to lay in
 					var gifRow = $("<div>")
@@ -52,7 +51,6 @@ $(document).ready(function () {
 
 					//set the div for the gifs an id
 					gifDiv.attr('id', 'gif-me')
-					// console.log(response.data)
 
 					var title = results[i].title;
 
