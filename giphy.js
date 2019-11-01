@@ -30,9 +30,6 @@ $(document).ready(function () {
 
 	})
 
-
-
-
 	$(document).on('click', '.gif-array-button', function () {
 		var anime = $(this).attr("data-name");
 
@@ -68,7 +65,7 @@ $(document).ready(function () {
 					//creating an img tag for the gif to be stored
 					var animeImage = $("<img>");
 
-					animeImage.attr("src", imgStill);
+					animeImage.attr("src", imgPlay);
 					animeImage.attr("data-state", "still")
 
 					//appending the image and the gif title
@@ -79,20 +76,20 @@ $(document).ready(function () {
 					$("#gif-show-here").prepend(gifDiv);
 					
 					//click the gif to make it play/pause
-					$(document).on("click", "img", function () {
-						var state = $(this).attr("data-state");
+					// $(document).on("click", "img", function () {
+					// 	var state = $(this).attr("data-state");
 
-						console.log(this)
+					// 	console.log(this)
 
-						if (state == "still") {
-							$(this).attr('src', $(this).attr("data-animate"));
-							$(this).attr("data-state", imgPlay);
-						} else {
-							$(this).attr('src', $(this).attr("data-still"));
-							$(this).attr("data-state", imgStill);
-						}
+					// 	if (state == "still") {
+					// 		$(this).attr('src', $(this).attr("data-animate"));
+					// 		$(this).attr("data-state", imgPlay);
+					// 	} else {
+					// 		$(this).attr('src', $(this).attr("data-still"));
+					// 		$(this).attr("data-state", imgStill);
+					// 	}
 	
-					}) //end of motion click function
+					// }) //end of motion click function
 
 				}
 			
