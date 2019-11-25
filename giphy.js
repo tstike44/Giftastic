@@ -30,9 +30,6 @@ $(document).on('click','#submit', function(event){
   
 })
 
-
-
-
 $(document).on('click','.gif-array-button', function(){
 
     var anime = $(this).attr("data-name");
@@ -72,18 +69,18 @@ var queryURL = "https://api.giphy.com/v1/gifs/search?&q="+ anime +"&limit=10&off
         
         
         
-        $(document).on("click", "img", function () {
-                var state = $(this).attr("data-state");
+        // $(document).on("click", "img", function () {
+        //         var state = $(this).attr("data-state");
 
-                if (state == "still") {
-                    $(this).attr('src', $(this).attr("data-animate"));
-                    $(this).attr("data-state", imgRes);
-                } else {
-                    $(this).attr('src', $(this).attr("data-still"));
-                    $(this).attr("data-state", stillRes);
-                }
+        //         if (state == "still") {
+        //             $(this).attr('src', $(this).attr("data-animate"));
+        //             $(this).attr("data-state", imgRes);
+        //         } else {
+        //             $(this).attr('src', $(this).attr("data-still"));
+        //             $(this).attr("data-state", stillRes);
+        //         }
                
-            }) //end of motion click function
+        //     }) //end of motion click function
         }
              
             
