@@ -26,7 +26,14 @@ $(document).ready(function () {
         //clear input field
         $("#search-here").val('');
 
-    })
+	})
+	const gifMe = $("#gif-me");
+
+	$(document).on('click', gifMe, () => {
+		const gifMe = $("#gif-me");
+		
+
+	})
 
     $(document).on('click', '.gif-array-button', function () {
         var anime = $(this).attr("data-name");
@@ -61,8 +68,9 @@ $(document).ready(function () {
                     //creating an img tag for the gif to be stored
                     var animeImage = $("<img>");
 
-                    animeImage.attr("src", imgPlay);
-                    animeImage.attr("data-state", "still")
+					animeImage.attr("src", imgPlay);
+					animeImage.attr("id", "gif-img");
+					animeImage.attr("data-state", "still")
 
                     //appending the image and the gif title
                     gifDiv.append(animeImage);
