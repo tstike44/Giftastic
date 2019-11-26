@@ -29,6 +29,9 @@ $(document).ready(function () {
 	})
 
 	$(document).on('click', '.gif-array-button', function () {
+		const gifShowHere = $("#gif-show-here");
+		const gifMe = $("#gif-me");
+		
 		var anime = $(this).attr("data-name");
 
 		var queryURL = "https://api.giphy.com/v1/gifs/search?&q=" + anime + "&limit=10&offset=0&lang=en&api_key=ovobMu0e9nWE7IM6EdMkjiLYqzi6rsjR";
@@ -62,6 +65,7 @@ $(document).ready(function () {
 					var animeImage = $("<img>");
 
 					animeImage.attr("src", imgPlay);
+					animeImage.attr("id", "gif-img");
 					animeImage.attr("data-state", "still")
 
 					//appending the image and the gif title
