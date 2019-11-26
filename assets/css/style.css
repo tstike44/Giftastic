@@ -46,6 +46,12 @@ button {
     padding-bottom: 30px;
   }
 
+  #search-here {
+    padding: 5px;
+    border-radius: 8px;
+    margin-top: 1px;
+  }
+
   #submit {
     background-color: black;
     color: white;
