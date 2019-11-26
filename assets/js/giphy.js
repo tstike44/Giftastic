@@ -27,11 +27,15 @@ $(document).ready(function () {
 		$("#search-here").val('');
 
 	})
+	const gifMe = $("#gif-me");
 
-	$(document).on('click', '.gif-array-button', function () {
-		const gifShowHere = $("#gif-show-here");
+	$(document).on('click', gifMe, () => {
 		const gifMe = $("#gif-me");
 		
+
+	})
+
+	$(document).on('click', '.gif-array-button', function () {
 		var anime = $(this).attr("data-name");
 
 		var queryURL = "https://api.giphy.com/v1/gifs/search?&q=" + anime + "&limit=10&offset=0&lang=en&api_key=ovobMu0e9nWE7IM6EdMkjiLYqzi6rsjR";
