@@ -2,7 +2,7 @@ $(document).ready(function () {
 	//store deafualt items on page load in this array
 	var animeArr = ['Gun Gale Online', 'One Punch Man', 'Fairy Tail', 'Seven Deadly Sins', 'The Devil Is a Part-Timer!', 'Soul Eater', "Death Note", "Devilman Crybaby", "Blue Exorcist", "Kakegurui"];
 
-	//creates the buttons at the top of the page
+	//creates the buttons at the top of the page and assign attributes 
 	for (i = 0; i < animeArr.length; i++) {
 		var arrayBtn = $("<button>");
 		arrayBtn.addClass("gif-array-button");
@@ -25,13 +25,21 @@ $(document).ready(function () {
 		animeArr.push(input);
 		//clear input field
 		$("#search-here").val('');
+	})
+	
+	const arrButton = $("#gir-array-button");
 
+	//click function to hide old gifs
+	$(document).on('click', arrButton, () => {
+		const gifMe = $("#gif-me");
+		gifMe.hide();
 	})
 
+	//click function to retrieve the gifs from the api
 	$(document).on('click', '.gif-array-button', function () {
-		var anime = $(this).attr("data-name");
-
-		var queryURL = "https://api.giphy.com/v1/gifs/search?&q=" + anime + "&limit=10&offset=0&lang=en&api_key=ovobMu0e9nWE7IM6EdMkjiLYqzi6rsjR";
+		var query = $(this).attr("data-name");
+		//setting query params
+		var queryURL = "https://api.giphy.com/v1/gifs/search?&q=" + query + "&limit=10&offset=0&lang=en&api_key=ovobMu0e9nWE7IM6EdMkjiLYqzi6rsjR";
 		$.ajax({
 			url: queryURL,
 			method: "GET"
@@ -62,14 +70,16 @@ $(document).ready(function () {
 					var animeImage = $("<img>");
 
 					animeImage.attr("src", imgPlay);
+					animeImage.attr("id", "gif-img");
 					animeImage.attr("data-state", "still")
 
 					//appending the image and the gif title
 					gifDiv.append(animeImage);
 					gifDiv.append(p);
 
-					//setting the gifs to show inthe div
+					//setting the gifs to show in the div
 					$("#gif-show-here").prepend(gifDiv);
+
 
 				}
 			}) //end of ajax response
